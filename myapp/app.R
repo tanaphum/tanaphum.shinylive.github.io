@@ -11,24 +11,10 @@ library(shiny)
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
-  includeCSS("www/style.css"),
-  fluidRow(
-    column(11  ,
-           h3("Tanaphum Wichaita"),
-           p("research software engineer"),
-           div(class = "contact",
-               uiOutput("moreControls")
-               ),
-    ),
-    column(1,    
-           tags$img(class="avatar",src="img/pic_small.jpg" )
-           ),
 
-  ),
     # Application title
-    h1("Work"),
-    
-    # includeScript("https://unpkg.com/github-calendar@latest/dist/github-calendar.min.js"),
+    titlePanel("Old Faithful Geyser Data"),
+
     # Sidebar with a slider input for number of bins 
     sidebarLayout(
         sidebarPanel(
@@ -44,21 +30,10 @@ ui <- fluidPage(
            plotOutput("distPlot")
         )
     )
-  
 )
 
 # Define server logic required to draw a histogram
 server <- function(input, output) {
-  
-  output$moreControls <- renderUI({
-    lapply(1:10, function(i) {
-      # <div class="contact-item" title="location">
-      #   <i class="fa-solid fa-location-dot"></i>
-      #     <span>{{ contact.location }}</span>
-      #     </div>
-      tags$span(paste0('Hi, this is output B#', i))
-    })
-  })
 
     output$distPlot <- renderPlot({
         # generate bins based on input$bins from ui.R
